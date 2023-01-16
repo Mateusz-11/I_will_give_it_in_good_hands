@@ -15,7 +15,6 @@ TYPE_INSTITUTION = (
    (3, "Zbiórka lokalna"),
 )
 
-
 class Institution(models.Model):
     name = models.CharField(max_length=256)
     description = models.TextField(null=True, blank=True)
