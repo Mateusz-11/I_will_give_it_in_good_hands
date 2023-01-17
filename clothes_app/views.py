@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 
+from clothes_app.forms import RegisterForm
 from clothes_app.models import Donation, Institution
 
 
@@ -17,14 +18,14 @@ class LandingPage(View):
         foundations = Donation.objects.filter(institution__type=1)
         ngo = Donation.objects.filter(institution__type=2)
         local_collections = Donation.objects.filter(institution__type=3)
-        cnx = {
+        ctx = {
             'bags': bags,
             'institutions': institutions,
             'foundations': foundations,
             'ngo': ngo,
             'local_collections': local_collections,
         }
-        return render(request, 'index.html', cnx)
+        return render(request, 'index.html', ctx)
 
 
 class AddDonation(View):
@@ -39,7 +40,8 @@ class Login(View):
 
 class Register(View):
     def get(self, request):
-        return render(request, 'register.html')
-
-
-
+        form = RegisterForm
+        ctx = {
+            'form': form,
+        }
+        return render(request, 'register.html', ctx)
