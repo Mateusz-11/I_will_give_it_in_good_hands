@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
@@ -8,7 +8,7 @@ from clothes_app.forms import RegisterForm, LoginForm
 from clothes_app.models import Donation, Institution
 
 
-class LandingPage(View):
+class LandingPageView(View):
     def get(self, request):
         bags = 0
         bags_list = Donation.objects.values_list('quantity', flat=True)
@@ -31,12 +31,12 @@ class LandingPage(View):
         return render(request, 'index.html', ctx)
 
 
-class AddDonation(View):
+class AddDonationView(View):
     def get(self, request):
         return render(request, 'form.html')
 
 
-class Login(View):
+class LoginView(View):
     def get(self, request):
         form = LoginForm
         ctx = {
@@ -55,12 +55,12 @@ class Login(View):
                 return redirect('index')
 
             else:
-                form.add_error(None, 'Błąd logowania')
+                raise TypeError('Zły login, lub hasło')
                 return redirect('register')
         return redirect('register')
 
 
-class Register(View):
+class RegisterView(View):
     def get(self, request):
         form = RegisterForm
         ctx = {
@@ -82,6 +82,12 @@ class Register(View):
             new_user.save()
             return redirect('login')
         return redirect('register')
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('index')
 
 
 
