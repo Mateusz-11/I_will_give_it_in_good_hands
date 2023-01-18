@@ -1,9 +1,10 @@
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from django.views import View
 
-from clothes_app.forms import RegisterForm
+from clothes_app.forms import RegisterForm, LoginForm
 from clothes_app.models import Donation, Institution
 
 
@@ -37,7 +38,26 @@ class AddDonation(View):
 
 class Login(View):
     def get(self, request):
-        return render(request, 'login.html')
+        form = LoginForm
+        ctx = {
+            'form': form,
+        }
+        return render(request, 'login.html', ctx)
+
+    def post(self, request):
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            password = form.cleaned_data.get('password')
+            username = form.cleaned_data.get('mail')
+            user = authenticate(username=username, password=password)
+            if user:
+                login(request, user)
+                return redirect('index')
+
+            else:
+                form.add_error(None, 'Błąd logowania')
+                return redirect('register')
+        return redirect('register')
 
 
 class Register(View):
@@ -62,3 +82,6 @@ class Register(View):
             new_user.save()
             return redirect('login')
         return redirect('register')
+
+
+
