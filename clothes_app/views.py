@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.shortcuts import render, redirect
 from django.views import View
 
 from clothes_app.forms import RegisterForm
@@ -45,3 +47,18 @@ class Register(View):
             'form': form,
         }
         return render(request, 'register.html', ctx)
+
+    def post(self, request):
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            password = form.cleaned_data.get('password')
+            password_repeat = form.cleaned_data.get('password_repeat')
+            mail = form.cleaned_data.get('mail')
+            if User.objects.filter(username=mail).exists():
+                raise ValidationError('Użytkownik już istnieje w bazie')
+            if password != password_repeat:
+                raise TypeError('Wprowadzone różne hasła')
+            new_user = User.objects.create_user(username=mail, password=password, email=mail)
+            new_user.save()
+            return redirect('login')
+        return redirect('register')
