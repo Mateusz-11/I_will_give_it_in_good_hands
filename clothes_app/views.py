@@ -37,8 +37,10 @@ class AddDonationView(LoginRequiredMixin, View):
     # redirect_field_name = ''
     def get(self, request):
         categories = Category.objects.all()
+        institutions = Institution.objects.all()
         ctx = {
             'categories': categories,
+            'institutions': institutions,
         }
         return render(request, 'form.html', ctx)
 
