@@ -1,11 +1,12 @@
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from django.views import View
 
 from clothes_app.forms import RegisterForm, LoginForm
-from clothes_app.models import Donation, Institution
+from clothes_app.models import Donation, Institution, Category
 
 
 class LandingPageView(View):
@@ -31,9 +32,15 @@ class LandingPageView(View):
         return render(request, 'index.html', ctx)
 
 
-class AddDonationView(View):
+class AddDonationView(LoginRequiredMixin, View):
+    login_url = 'login'
+    # redirect_field_name = ''
     def get(self, request):
-        return render(request, 'form.html')
+        categories = Category.objects.all()
+        ctx = {
+            'categories': categories,
+        }
+        return render(request, 'form.html', ctx)
 
 
 class LoginView(View):
