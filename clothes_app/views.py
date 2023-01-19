@@ -62,8 +62,13 @@ class LoginView(View):
                 return redirect('index')
 
             else:
-                raise TypeError('Zły login, lub hasło')
-                return redirect('register')
+                msg = "Zły login, lub hasło"
+                form = LoginForm
+                ctx = {
+                    'form': form,
+                    'msg': msg,
+                }
+                return render(request, 'login.html', ctx)
         return redirect('register')
 
 
@@ -82,9 +87,21 @@ class RegisterView(View):
             password_repeat = form.cleaned_data.get('password_repeat')
             mail = form.cleaned_data.get('mail')
             if User.objects.filter(username=mail).exists():
-                raise ValidationError('Użytkownik już istnieje w bazie')
+                msg = 'Użytkownik już istnieje w bazie'
+                form = RegisterForm
+                ctx = {
+                    'form': form,
+                    'msg': msg,
+                }
+                return render(request, 'register.html', ctx)
             if password != password_repeat:
-                raise TypeError('Wprowadzone różne hasła')
+                msg = 'Wprowadzone różne hasła'
+                form = RegisterForm
+                ctx = {
+                    'form': form,
+                    'msg': msg,
+                }
+                return render(request, 'register.html', ctx)
             new_user = User.objects.create_user(username=mail, password=password, email=mail)
             new_user.save()
             return redirect('login')
