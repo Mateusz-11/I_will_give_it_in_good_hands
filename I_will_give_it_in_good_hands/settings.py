@@ -125,4 +125,4 @@ except ModuleNotFoundError:
     exit(0)
 
 # Login URL
-LOGIN_URL = '/'
+LOGIN_URL = '/login'

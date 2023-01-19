@@ -33,8 +33,6 @@ class LandingPageView(View):
 
 
 class AddDonationView(LoginRequiredMixin, View):
-    login_url = 'login'
-    # redirect_field_name = ''
     def get(self, request):
         categories = Category.objects.all()
         institutions = Institution.objects.all()
