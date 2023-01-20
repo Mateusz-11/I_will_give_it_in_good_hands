@@ -118,8 +118,10 @@ class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
         if user.is_authenticated:
+            donations = Donation.objects.filter(user=request.user)
             ctx = {
                 'user': user,
+                'donations': donations,
             }
             return render(request, 'profile.html', ctx)
         else:
