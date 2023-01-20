@@ -19,7 +19,7 @@ from django.urls import path
 from clothes_app.views import LandingPageView, AddDonationView, LoginView, RegisterView, LogoutView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('', LandingPageView.as_view(), name="index"),
     path('add_donation', AddDonationView.as_view(), name="add_donation"),
     path('login', LoginView.as_view(), name="login"),

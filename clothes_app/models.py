@@ -8,6 +8,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Kategorie"
+
 
 TYPE_INSTITUTION = (
    (1, "Fundacja"),
@@ -24,6 +28,10 @@ class Institution(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = "Institution"
+        verbose_name_plural = "Instytucje"
+
 
 class Donation(models.Model):
     quantity = models.SmallIntegerField()
@@ -37,3 +45,7 @@ class Donation(models.Model):
     pick_up_time = models.TimeField()
     pick_up_comment = models.TextField(null=True, blank=True)
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+
+    class Meta:
+        verbose_name = "Donation"
+        verbose_name_plural = "Darowizny"
