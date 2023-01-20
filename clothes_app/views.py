@@ -114,4 +114,16 @@ class LogoutView(View):
         return redirect('index')
 
 
-
+class ProfileView(LoginRequiredMixin, View):
+    def get(self, request):
+        user = request.user
+        if user.is_authenticated:
+            ctx = {
+                'user': user,
+            }
+            return render(request, 'profile.html', ctx)
+        else:
+            ctx = {
+                'msg': 'Widok tylko dla zalogowanych',
+            }
+            return render(request, 'profile.html', ctx)
