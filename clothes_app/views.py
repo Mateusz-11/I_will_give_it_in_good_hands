@@ -5,7 +5,7 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import render, redirect
 from django.views import View
 
-from clothes_app.forms import RegisterForm, LoginForm
+from clothes_app.forms import RegisterForm, LoginForm, EditProfileForm, ResetPasswordForm
 from clothes_app.models import Donation, Institution, Category
 
 
@@ -129,3 +129,64 @@ class ProfileView(LoginRequiredMixin, View):
                 'msg': 'Widok tylko dla zalogowanych',
             }
             return render(request, 'profile.html', ctx)
+
+
+class EditProfileView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = EditProfileForm
+        ctx = {
+            'form': form,
+        }
+        return render(request, 'edit_profile.html', ctx)
+
+    def post(self, request):
+        form = EditProfileForm(request.POST)
+        if form.is_valid():
+            password = form.cleaned_data.get('password')
+            mail = form.cleaned_data.get('mail')
+            if User.objects.filter(username=mail).exists():
+                msg = 'Użytkownik już istnieje w bazie'
+                form = EditProfileForm
+                ctx = {
+                    'form': form,
+                    'msg': msg,
+                }
+                return render(request, 'edit_profile.html', ctx)
+            if password != password_repeat:
+                msg = 'Wprowadzone różne hasła'
+                form = RegisterForm
+                ctx = {
+                    'form': form,
+                    'msg': msg,
+                }
+                return render(request, 'edit_profile.html', ctx)
+            user = User.objects.create_user(username=mail, password=password, email=mail)
+            user.save()
+            return redirect('login')
+        return redirect('register')
+
+
+class ResetPasswordView(LoginRequiredMixin, View):
+    def get(self, request):
+        form = ResetPasswordForm(request.POST)
+        ctx = {
+            'form': form,
+        }
+        return render(request, 'reset_password.html', ctx)
+
+    def post(self, request):
+        form = ResetPasswordForm(request.POST)
+
+        ctx = {
+            'form': form,
+        }
+        if form.is_valid():
+            mail = form.cleaned_data.get('mail')
+            # password_old = form.cleaned_data.get('password')
+            password_new = form.cleaned_data.get('password_new')
+            # password_new_repeat = form.cleaned_data.get('password_new_repeat')
+            user = User.objects.get(email=mail)
+            user.set_password(password_new)
+            user.save()
+            return redirect('index')
+        return render(request, 'reset_password.html', ctx)

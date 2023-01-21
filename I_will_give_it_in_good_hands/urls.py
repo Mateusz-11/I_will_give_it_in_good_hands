@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from clothes_app.views import LandingPageView, AddDonationView, LoginView, RegisterView, LogoutView, ProfileView
+from clothes_app.views import LandingPageView, AddDonationView, LoginView, RegisterView, LogoutView, ProfileView, \
+    EditProfileView, ResetPasswordView
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
@@ -26,4 +27,6 @@ urlpatterns = [
     path('register', RegisterView.as_view(), name="register"),
     path('logout', LogoutView.as_view(), name="logout"),
     path('profile', ProfileView.as_view(), name="profile"),
+    path('edit-profile', EditProfileView.as_view(), name="edit_profile"),
+    path('reset-password', ResetPasswordView.as_view(), name="reset-password"),
 ]

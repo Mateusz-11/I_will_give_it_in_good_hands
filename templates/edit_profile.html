@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block background %} {% endblock %}
+{% block top %} {% endblock %}
+
+{% block content %}
+    <section id="register" class="login-page">
+        <h2>Zmiana danych:</h2>
+        <p>Wpisz dane, które chcesz zmienić, oraz aktualne hasło do profilu.</p>
+        <form action="#" method="post">
+            {% csrf_token %}
+            <div style="color: red;">{{ msg }}</div>
+            <div class="form-group">Email:<br>
+                {{ form.mail }}
+            </div>
+            <div class="form-group">Wpisz hasło:<br>
+                {{ form.password }}
+            </div>
+
+            <div class="form-group form-group--buttons">
+                <a href="{% url 'profile' %}" class="btn btn--without-border">Profil</a>
+                <a href="{% url 'reset-password' %}" class="btn btn--without-border">Zmiana hasła</a>
+                <button class="btn" type="submit">Zmień dane</button>
+            </div>
+        </form>
+    </section>
+{% endblock %}
