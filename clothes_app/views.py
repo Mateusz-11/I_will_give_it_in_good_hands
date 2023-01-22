@@ -85,6 +85,8 @@ class RegisterView(View):
         if form.is_valid():
             password = form.cleaned_data.get('password')
             password_repeat = form.cleaned_data.get('password_repeat')
+            first_name = form.cleaned_data.get('first_name')
+            last_name = form.cleaned_data.get('last_name')
             mail = form.cleaned_data.get('mail')
             if User.objects.filter(username=mail).exists():
                 msg = 'Użytkownik już istnieje w bazie'
@@ -102,7 +104,7 @@ class RegisterView(View):
                     'msg': msg,
                 }
                 return render(request, 'register.html', ctx)
-            new_user = User.objects.create_user(username=mail, password=password, email=mail)
+            new_user = User.objects.create_user(username=mail, password=password, email=mail, first_name=first_name, last_name=last_name)
             new_user.save()
             return redirect('login')
         return redirect('register')

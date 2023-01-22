@@ -3,7 +3,9 @@ from django import forms
 
 class RegisterForm(forms.Form):
     mail = forms.EmailField(label="Email", max_length=30, widget=forms.TextInput(attrs={'placeholder': 'Email'}))
-    password_old = forms.CharField(label="Stare hasło", max_length=30, widget=forms.PasswordInput(attrs={'placeholder': 'Hasło'}))
+    first_name = forms.CharField(label="Imię", max_length=30, widget=forms.TextInput(attrs={'placeholder': 'Imię'}))
+    last_name = forms.CharField(label="Nazwisko", max_length=30, widget=forms.TextInput(attrs={'placeholder': 'Nazwisko'}))
+    password = forms.CharField(label="Hasło", max_length=30, widget=forms.PasswordInput(attrs={'placeholder': 'Hasło'}))
     password_repeat = forms.CharField(label="Powtórz hasło", max_length=30, widget=forms.PasswordInput(attrs={'placeholder': 'Powtórz hasło'}))
 
 class LoginForm(forms.Form):
