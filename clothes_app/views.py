@@ -152,6 +152,7 @@ class EditProfileView(LoginRequiredMixin, View):
             user_auth = authenticate(username=user.username, password=password)
             if user_auth is not None:
                 user.mail = mail
+                user.username = mail
                 user.first_name = first_name
                 user.last_name = last_name
                 user.save()
