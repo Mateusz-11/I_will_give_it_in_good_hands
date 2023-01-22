@@ -18,7 +18,7 @@
 
             <div class="form-group form-group--buttons">
                 <a href="{% url 'profile' %}" class="btn btn--without-border">Profil</a>
-                <a href="{% url 'reset-password' %}" class="btn btn--without-border">Zmiana hasła</a>
+                <a href="{% url 'reset-password' request.user.id %}" class="btn btn--without-border">Zmiana hasła</a>
                 <button class="btn" type="submit">Zmień dane</button>
             </div>
         </form>

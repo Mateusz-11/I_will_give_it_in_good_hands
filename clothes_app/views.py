@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 
 from clothes_app.forms import RegisterForm, LoginForm, EditProfileForm, ResetPasswordForm
@@ -132,14 +132,14 @@ class ProfileView(LoginRequiredMixin, View):
 
 
 class EditProfileView(LoginRequiredMixin, View):
-    def get(self, request):
+    def get(self, request,  user_id):
         form = EditProfileForm
         ctx = {
             'form': form,
         }
         return render(request, 'edit_profile.html', ctx)
 
-    def post(self, request):
+    def post(self, request,  user_id):
         form = EditProfileForm(request.POST)
         if form.is_valid():
             password = form.cleaned_data.get('password')
@@ -167,26 +167,40 @@ class EditProfileView(LoginRequiredMixin, View):
 
 
 class ResetPasswordView(LoginRequiredMixin, View):
-    def get(self, request):
+    def get(self, request,  user_id):
         form = ResetPasswordForm(request.POST)
         ctx = {
             'form': form,
         }
         return render(request, 'reset_password.html', ctx)
 
-    def post(self, request):
+    def post(self, request,  user_id):
         form = ResetPasswordForm(request.POST)
-
         ctx = {
             'form': form,
         }
         if form.is_valid():
-            mail = form.cleaned_data.get('mail')
-            # password_old = form.cleaned_data.get('password')
+            user = get_object_or_404(User, pk=user_id)
+            password_old = form.cleaned_data.get('password_old')
             password_new = form.cleaned_data.get('password_new')
-            # password_new_repeat = form.cleaned_data.get('password_new_repeat')
-            user = User.objects.get(email=mail)
-            user.set_password(password_new)
-            user.save()
-            return redirect('index')
+            password_new_repeat = form.cleaned_data.get('password_new_repeat')
+            user_auth = authenticate(username=user.username, password=password_old)
+            if user_auth is not None:
+                if password_new != password_new_repeat:
+                    ctx = {
+                        'msg': "Hasła sie różnią",
+                        'form': form,
+                    }
+                    return render(request, 'reset_password.html', ctx)
+                user.set_password(password_new)
+                user.save()
+                ctx = {
+                    'msg': "Hasło zostało zmienione",
+                }
+                return render(request, 'reset_password.html', ctx)
+            ctx = {
+                'msg': "Błędne hasło",
+                'form': form,
+            }
+            return render(request, 'reset_password.html', ctx)
         return render(request, 'reset_password.html', ctx)

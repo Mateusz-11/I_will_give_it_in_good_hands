@@ -27,6 +27,6 @@ urlpatterns = [
     path('register', RegisterView.as_view(), name="register"),
     path('logout', LogoutView.as_view(), name="logout"),
     path('profile', ProfileView.as_view(), name="profile"),
-    path('edit-profile', EditProfileView.as_view(), name="edit_profile"),
-    path('reset-password', ResetPasswordView.as_view(), name="reset-password"),
+    path('edit-profile/<int:user_id>/', EditProfileView.as_view(), name="edit_profile"),
+    path('reset-password/<int:user_id>/', ResetPasswordView.as_view(), name="reset-password"),
 ]
