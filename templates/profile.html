@@ -5,10 +5,10 @@
 {% block content %}
     <section id="profile" class="login-page">
         <h2>Twoje dane:</h2>
-        <h3>Nazwa: {{ user }}</h3>
-        <h3>Imię: {{ user.first_name }}</h3>
-        <h3>Nazwisko: {{ user.last_name }}</h3>
-        <h3>Mail: {{ user.email }}</h3>
+        <p><b>Nazwa:</b> {{ user }}</p>
+        <p><b>Imię:</b> {{ user.first_name }}</p>
+        <p><b>Nazwisko:</b> {{ user.last_name }}</p>
+        <p><b>Mail:</b> {{ user.email }}</p>
         <h2>Dary</h2>
         {% if donations|length == 0 %}
             <h2>Brak przekazanych darów</h2>
@@ -16,11 +16,11 @@
         {% else %}
             <ol>
                 {% for donation in donations %}
-                    <li>Dary: <br>
-                        <h3>Ilość przekazanych worków {{ donation.quantity }}</h3> <br>
-                        <h3>Gdzie przekazano {{ donation.institution }}</h3> <br>
-                        <h3>Kategoria daru {% for cat in donation.categories.all %}{{ cat.name }}{% endfor %}</h3> <br>
-                        <h3>Data przekazania {{ donation.pick_up_date }}</h3> <br>
+                    <li>
+                        <p><b>Ilość worków:</b> {{ donation.quantity }}</p> <br>
+                        <p><b>Instytucja:</b> {{ donation.institution }}</p> <br>
+                        <p><b>Kategoria:</b> {% for cat in donation.categories.all %}{{ cat.name }}{% endfor %}</p> <br>
+                        <p><b>Data przekazania:</b> {{ donation.pick_up_date }}</p> <br>
                     </li>
                 {% endfor %}
             </ol>
