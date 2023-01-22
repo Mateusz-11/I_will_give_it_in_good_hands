@@ -13,6 +13,8 @@ class LoginForm(forms.Form):
 
 class EditProfileForm(forms.Form):
     mail = forms.EmailField(label="Email", max_length=30, widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+    first_name = forms.CharField(label="Imię", max_length=30, widget=forms.TextInput(attrs={'placeholder': 'Imię'}))
+    last_name = forms.CharField(label="Nazwisko", max_length=30, widget=forms.TextInput(attrs={'placeholder': 'Nazwisko'}))
     password = forms.CharField(label="Hasło", max_length=30, widget=forms.PasswordInput(attrs={'placeholder': 'Hasło'}))
 
 class ResetPasswordForm(forms.Form):

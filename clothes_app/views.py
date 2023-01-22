@@ -142,28 +142,28 @@ class EditProfileView(LoginRequiredMixin, View):
     def post(self, request,  user_id):
         form = EditProfileForm(request.POST)
         if form.is_valid():
-            password = form.cleaned_data.get('password')
+            user = get_object_or_404(User, pk=user_id)
             mail = form.cleaned_data.get('mail')
-            if User.objects.filter(username=mail).exists():
-                msg = 'Użytkownik już istnieje w bazie'
-                form = EditProfileForm
+            first_name = form.cleaned_data.get('first_name')
+            last_name = form.cleaned_data.get('last_name')
+            password = form.cleaned_data.get('password')
+            user_auth = authenticate(username=user.username, password=password)
+            if user_auth is not None:
+                user.mail = mail
+                user.first_name = first_name
+                user.last_name = last_name
+                user.save()
                 ctx = {
-                    'form': form,
-                    'msg': msg,
+                    'msg': "Dane zostały zmienione",
                 }
                 return render(request, 'edit_profile.html', ctx)
-            if password != password_repeat:
-                msg = 'Wprowadzone różne hasła'
-                form = RegisterForm
+            else:
                 ctx = {
+                    'msg': "Błędne hasło",
                     'form': form,
-                    'msg': msg,
                 }
                 return render(request, 'edit_profile.html', ctx)
-            user = User.objects.create_user(username=mail, password=password, email=mail)
-            user.save()
-            return redirect('login')
-        return redirect('register')
+        return redirect('index')
 
 
 class ResetPasswordView(LoginRequiredMixin, View):
