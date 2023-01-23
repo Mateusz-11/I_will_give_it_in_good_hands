@@ -14,21 +14,29 @@
             <h2>Brak przekazanych darów</h2>
 
         {% else %}
-            <ol>
+            <table class="table table-hover table-light">
+                <thead>
+                <th scope="col">L.p.</th>
+                <th scope="col">Ilość worków</th>
+                <th scope="col">Instytucja</th>
+                <th scope="col">Kategoria</th>
+                <th scope="col">Data przekazania</th>
+                </thead>
+                <tbody>
                 {% for donation in donations %}
-                    <li>
-                        <p><b>Ilość worków:</b> {{ donation.quantity }}</p> <br>
-                        <p><b>Instytucja:</b> {{ donation.institution }}</p> <br>
-                        <p><b>Kategoria:</b> {% for cat in donation.categories.all %}{{ cat.name }}{% endfor %}</p> <br>
-                        <p><b>Data przekazania:</b> {{ donation.pick_up_date }}</p> <br>
-                    </li>
+                    <tr>
+                    <td>#</td>
+                    <td>{{ donation.quantity }}</td>
+                    <td>{{ donation.institution }}</td>
+                    <td>{% for cat in donation.categories.all %}{{ cat.name }}{% endfor %}</td>
+                    <td>{{ donation.pick_up_date }}</td>
                 {% endfor %}
-            </ol>
+                </tbody>
+            </table>
         {% endif %}
         <div>
             <h2>{{ msg }}</h2>
         </div>
-
 
     </section>
 {% endblock %}
