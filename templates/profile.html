@@ -25,7 +25,7 @@
                 <tbody>
                 {% for donation in donations %}
                     <tr>
-                    <td>#</td>
+                    <td>{{ forloop.counter }}</td>
                     <td>{{ donation.quantity }}</td>
                     <td>{{ donation.institution }}</td>
                     <td>{% for cat in donation.categories.all %}{{ cat.name }}{% endfor %}</td>
