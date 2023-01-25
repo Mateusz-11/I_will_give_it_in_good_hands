@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
       // Current slide
       this.currentSlide = $btn.parentElement.dataset.id;
 
+
       // Slides active class change
       this.$slidesContainers.forEach(el => {
         el.classList.remove("active");
@@ -62,8 +63,6 @@ document.addEventListener("DOMContentLoaded", function() {
     changePage(e) {
       e.preventDefault();
       const page = e.target.dataset.page;
-
-      console.log(page);
     }
   }
   const helpSection = document.querySelector(".help");
@@ -177,8 +176,25 @@ document.addEventListener("DOMContentLoaded", function() {
       const $stepForms = form.querySelectorAll("form > div");
       this.slides = [...this.$stepInstructions, ...$stepForms];
 
+      const choiceElement = form.querySelectorAll("#choice");
+      this.selectedCategories = [];
+
+
+      choiceElement.forEach((element) => {
+        element.addEventListener("click", (event) => {
+          if (element.checked) {
+            this.selectedCategories.push(event.target.value)
+          } else {
+            this.selectedCategories = this.selectedCategories.filter( cat => cat === event.target.value)
+          }
+        })
+      })
+
+
       this.init();
     }
+
+
 
     /**
      * Init all methods
@@ -187,6 +203,8 @@ document.addEventListener("DOMContentLoaded", function() {
       this.events();
       this.updateForm();
     }
+
+
 
     /**
      * All events that are happening in form
@@ -220,6 +238,8 @@ document.addEventListener("DOMContentLoaded", function() {
      */
     updateForm() {
       this.$step.innerText = this.currentStep;
+      this.selectedInstitution = [];
+
 
       // TODO: Validation
 
@@ -230,6 +250,50 @@ document.addEventListener("DOMContentLoaded", function() {
           slide.classList.add("active");
         }
       });
+
+
+      if (this.currentStep === 3) {
+        const institutionElements = document.querySelectorAll("#institution");
+        institutionElements.forEach( (elementDiv) => {
+          const institutionCategories = elementDiv.dataset.id.split(" ")
+          if (this.selectedCategories.some(selectedCategory => institutionCategories.includes(selectedCategory))) {
+            elementDiv.style.display = "block"
+          } else {
+            elementDiv.style.display = "none"
+          }
+        })
+
+        institutionElements.forEach((element) => {
+          element.addEventListener("click", (event) => {
+            if (element.checked) {
+              this.selectedInstitution.push(event.target.id)
+            } else {
+              this.selectedInstitution.push('Ma Serce')
+            }
+          })
+        })
+
+      }
+      if (this.currentStep === 4) {
+        console.log('step4')
+      }
+      if (this.currentStep === 5) {
+        const streetValue = document.querySelector('#street').value
+        const cityValue = document.querySelector('#city').value
+        const postcodeValue = document.querySelector('#postcode').value
+        const phoneValue = document.querySelector('#phone').value
+        const dataValue = document.querySelector('#data').value
+        const timeValue = document.querySelector('#time').value
+        const moreInfoValue = document.querySelector('#more_info').value
+        const bugs = document.querySelector('#bags').value
+
+
+
+        console.log('step5', streetValue, cityValue, postcodeValue, phoneValue, dataValue, timeValue, moreInfoValue, bugs, this.selectedInstitution)
+      }
+      if (this.currentStep === 6 ) {
+        console.log('step6')
+      }
 
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
       this.$step.parentElement.hidden = this.currentStep >= 6;
