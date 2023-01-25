@@ -146,6 +146,24 @@
               <li><a href="#" class="btn btn--small btn--without-border" data-page="5">5</a></li>
             </ul>
             -->
+            <div class="pagination">
+    <span class="step-links">
+        {% if ngo.has_previous %}
+            <a href="?page=1#help">&laquo; first</a>
+            <a href="?page={{ ngo.previous_page_number }}#help">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ ngo.number }} of {{ ngo.paginator.num_pages }}.
+        </span>
+
+        {% if ngo.has_next %}
+            <a href="?page={{ ngo.next_page_number }}#help">next</a>
+            <a href="?page={{ ngo.paginator.num_pages }}#help">last &raquo;</a>
+        {% endif %}
+    </span>
+            </div>
+        </div>
         </div>
 
         <!-- SLIDE 3 -->
@@ -168,12 +186,30 @@
                 </ul>
             {% endfor %}
 
-            <!-- Pagination
-            <ul class="help--slides-pagination">
-              <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-              <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
-            </ul>
-            -->
+            {#            <!-- Pagination#}
+            {#            <ul class="help--slides-pagination">#}
+            {#              <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>#}
+            {#              <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>#}
+            {#            </ul>#}
+            {#            -->#}
+            <div class="pagination">
+        <span class="step-links">
+        {% if local_collections.has_previous %}
+            <a href="?page=1#help">&laquo; first</a>
+            <a href="?page={{ local_collections.previous_page_number }}#help">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ local_collections.number }} of {{ local_collections.paginator.num_pages }}.
+        </span>
+
+        {% if local_collections.has_next %}
+            <a href="?page={{ local_collections.next_page_number }}#help">next</a>
+            <a href="?page={{ local_collections.paginator.num_pages }}#help">last &raquo;</a>
+        {% endif %}
+    </span>
+            </div>
+        </div>
         </div>
     </section>
 {% endblock %}

@@ -25,8 +25,16 @@ class LandingPageView(View):
         page_number = request.GET.get('page')
         foundations = paginator.get_page(page_number)
 
-        ngo = Donation.objects.filter(institution__type=2)
-        local_collections = Donation.objects.filter(institution__type=3)
+        ngo1 = Donation.objects.filter(institution__type=2)
+        paginator = Paginator(ngo1, 5)
+        page_number = request.GET.get('page')
+        ngo = paginator.get_page(page_number)
+
+        local_collections1 = Donation.objects.filter(institution__type=3)
+        paginator = Paginator(local_collections1, 5)
+        page_number = request.GET.get('page')
+        local_collections = paginator.get_page(page_number)
+
         ctx = {
             'bags': bags,
             'institutions': institutions,
@@ -140,7 +148,7 @@ class ProfileView(LoginRequiredMixin, View):
 
 class EditProfileView(LoginRequiredMixin, View):
     def get(self, request,  user_id):
-        form = EditProfileForm
+        form = EditProfileForm(initial={'mail':"123"})
         ctx = {
             'form': form,
         }
