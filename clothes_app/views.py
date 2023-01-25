@@ -148,7 +148,8 @@ class ProfileView(LoginRequiredMixin, View):
 
 class EditProfileView(LoginRequiredMixin, View):
     def get(self, request,  user_id):
-        form = EditProfileForm(initial={'mail':"123"})
+        user = request.user
+        form = EditProfileForm(initial={'mail': user.email, "first_name": user.first_name, "last_name": user.last_name})
         ctx = {
             'form': form,
         }
