@@ -246,24 +246,24 @@ document.addEventListener("DOMContentLoaded", function() {
       this.slides.forEach(slide => {
         slide.classList.remove("active");
 
-        if (slide.dataset.step == this.currentStep) {
+        if (slide.dataset.step === this.currentStep) {
           slide.classList.add("active");
         }
       });
 
 
       if (this.currentStep === 3) {
-        const institutionElements = document.querySelectorAll("#institution");
-        institutionElements.forEach( (elementDiv) => {
-          const institutionCategories = elementDiv.dataset.id.split(" ")
+        const institutionEl = document.querySelectorAll("#institution");
+        institutionEl.forEach( (elDiv) => {
+          const institutionCategories = elDiv.dataset.id.split(" ")
           if (this.selectedCategories.some(selectedCategory => institutionCategories.includes(selectedCategory))) {
-            elementDiv.style.display = "block"
+            elDiv.style.display = "block"
           } else {
-            elementDiv.style.display = "none"
+            elDiv.style.display = "none"
           }
         })
 
-        institutionElements.forEach((element) => {
+        institutionEl.forEach((element) => {
           element.addEventListener("click", (event) => {
             if (element.checked) {
               this.selectedInstitution.push(event.target.id)
