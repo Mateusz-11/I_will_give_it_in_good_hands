@@ -117,7 +117,8 @@ class RegisterView(View):
                     'msg': msg,
                 }
                 return render(request, 'register.html', ctx)
-            new_user = User.objects.create_user(username=mail, password=password, email=mail, first_name=first_name, last_name=last_name)
+            new_user = User.objects.create_user(username=mail, password=password, email=mail, first_name=first_name,
+                                                last_name=last_name)
             new_user.save()
             return redirect('login')
         return redirect('register')
@@ -221,3 +222,4 @@ class ResetPasswordView(LoginRequiredMixin, View):
             }
             return render(request, 'reset_password.html', ctx)
         return render(request, 'reset_password.html', ctx)
+    
