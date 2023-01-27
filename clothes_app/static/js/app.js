@@ -178,7 +178,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
       const choiceElement = form.querySelectorAll("#choice");
       this.selectedCategories = [];
-
+      this.data = {bagsNumber: 0};
+      const bagsInput = form.querySelector("input[name='bags']")
+      this.bagsNumberElement = form.querySelector(".summary-bags-number")
+      console.log(this.bagsNumberElement)
 
       choiceElement.forEach((element) => {
         element.addEventListener("click", (event) => {
@@ -188,6 +191,10 @@ document.addEventListener("DOMContentLoaded", function() {
             this.selectedCategories = this.selectedCategories.filter( cat => cat === event.target.value)
           }
         })
+      })
+
+      bagsInput.addEventListener("change", (event) => {
+        this.data.bagsNumber = Number(event.target.value)
       })
 
 
@@ -246,7 +253,7 @@ document.addEventListener("DOMContentLoaded", function() {
       this.slides.forEach(slide => {
         slide.classList.remove("active");
 
-        if (slide.dataset.step === this.currentStep) {
+        if (Number(slide.dataset.step) === this.currentStep) {
           slide.classList.add("active");
         }
       });
@@ -262,18 +269,8 @@ document.addEventListener("DOMContentLoaded", function() {
             elDiv.style.display = "none"
           }
         })
-
-        institutionEl.forEach((element) => {
-          element.addEventListener("click", (event) => {
-            if (element.checked) {
-              this.selectedInstitution.push(event.target.id)
-            } else {
-              this.selectedInstitution.push('Ma Serce')
-            }
-          })
-        })
-
       }
+
       if (this.currentStep === 4) {
         console.log('step4')
       }
@@ -282,14 +279,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const cityValue = document.querySelector('#city').value
         const postcodeValue = document.querySelector('#postcode').value
         const phoneValue = document.querySelector('#phone').value
-        const dataValue = document.querySelector('#data').value
-        const timeValue = document.querySelector('#time').value
-        const moreInfoValue = document.querySelector('#more_info').value
-        const bugs = document.querySelector('#bags').value
+        // const dataValue = document.querySelector('#data').value
+        // const timeValue = document.querySelector('#time').value
+        // const moreInfoValue = document.querySelector('#more_info').value
+        // const bugs = document.querySelector('#bags').value
+        this.bagsNumberElement.textContent = this.data.bagsNumber.toString()
+
+        console.log(this.bagsNumberElement)
 
 
-
-        console.log('step5', streetValue, cityValue, postcodeValue, phoneValue, dataValue, timeValue, moreInfoValue, bugs, this.selectedInstitution)
+        // console.log('step5', streetValue, cityValue, postcodeValue, phoneValue, dataValue, timeValue, moreInfoValue, bugs, this.selectedInstitution)
       }
       if (this.currentStep === 6 ) {
         console.log('step6')
