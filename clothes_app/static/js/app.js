@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const choiceElement = form.querySelectorAll("#choice");
       this.selectedCategories = [];
 
-      this.data = {bagsNumber: 0, addressForm: "", cityForm: "", postcodeForm: "", commentsForm: "", timeForm: "", dateForm: ""};
+      this.data = {bagsNumber: 0, addressForm: "", cityForm: "", postcodeForm: "", commentsForm: "", timeForm: "", phoneFormElement: "", dateForm: "", categoriesForm: ""};
 
       const bagsInput = form.querySelector("input[name='bags']")
       this.bagsNumberElement = form.querySelector(".summary-bags-number")
@@ -199,7 +199,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       const dateInput = form.querySelector("input[name='date']")
       this.dateFormElement = form.querySelector(".summary-date")
-      console.log(dateInput)
+      // console.log(dateInput)
 
       const timeInput = form.querySelector("input[name='time']")
       this.timeFormElement = form.querySelector(".summary-time")
@@ -208,6 +208,11 @@ document.addEventListener("DOMContentLoaded", function() {
       const commentsInput = form.querySelector("textarea[name='comments']")
       this.commentsFormElement = form.querySelector(".summary-comments")
       // console.log(commentsInput)
+
+      const categoriesInput = form.querySelector("input[name='categories']")
+      // const categoriesInput = form.querySelector("span.description")
+      this.categoriesFormElement = form.querySelector(".summary-categories")
+      console.log(categoriesInput)
 
 
 
@@ -247,6 +252,20 @@ document.addEventListener("DOMContentLoaded", function() {
       })
       commentsInput.addEventListener("change", (event) => {
         this.data.commentsForm = event.target.value
+      })
+
+      // categoriesInput.addEventListener("click", (event) => {
+      //   this.data.categoriesForm = event.target.value;
+      //   console.log("test click")
+      // })
+
+      choiceElement.forEach((element) => {
+        element.addEventListener("click", (event) => {
+          if (element.checked) {
+            console.log("test click")
+            this.data.categoriesForm = event.target.value
+          }
+        })
       })
 
 
@@ -325,11 +344,6 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log('step4')
       }
       if (this.currentStep === 5) {
-        const streetValue = document.querySelector('#street').value
-        const cityValue = document.querySelector('#city').value
-        const postcodeValue = document.querySelector('#postcode').value
-        const phoneValue = document.querySelector('#phone').value
-
         this.bagsNumberElement.textContent = this.data.bagsNumber.toString()
         // console.log(this.bagsNumberElement)
         this.addressFormElement.textContent = this.data.addressForm.toString()
@@ -340,8 +354,11 @@ document.addEventListener("DOMContentLoaded", function() {
         this.dateFormElement.textContent = this.data.dateForm.toString()
         this.timeFormElement.textContent = this.data.timeForm.toString()
         this.commentsFormElement.textContent = this.data.commentsForm.toString()
+        this.categoriesFormElement.textContent = this.data.categoriesForm.toString()
+        console.log(this.categoriesFormElement)
 
       }
+
       if (this.currentStep === 6 ) {
         console.log('step6')
       }
