@@ -178,10 +178,39 @@ document.addEventListener("DOMContentLoaded", function() {
 
       const choiceElement = form.querySelectorAll("#choice");
       this.selectedCategories = [];
-      this.data = {bagsNumber: 0};
+
+      this.data = {bagsNumber: 0, addressForm: "", cityForm: "", postcodeForm: "", commentsForm: "", timeForm: "", dateForm: ""};
+
       const bagsInput = form.querySelector("input[name='bags']")
       this.bagsNumberElement = form.querySelector(".summary-bags-number")
-      console.log(this.bagsNumberElement)
+
+      const addressInput = form.querySelector("input[name='address']")
+      this.addressFormElement = form.querySelector(".summary-address")
+
+      const cityInput = form.querySelector("input[name='city']")
+      this.cityFormElement = form.querySelector(".summary-city")
+
+      const postcodeInput = form.querySelector("input[name='postcode']")
+      this.postcodeFormElement = form.querySelector(".summary-postcode")
+
+      const phoneInput = form.querySelector("input[name='phone']")
+      this.phoneFormElement = form.querySelector(".summary-phone")
+      // console.log(phoneInput)
+
+      const dateInput = form.querySelector("input[name='date']")
+      this.dateFormElement = form.querySelector(".summary-date")
+      console.log(dateInput)
+
+      const timeInput = form.querySelector("input[name='time']")
+      this.timeFormElement = form.querySelector(".summary-time")
+      // console.log(timeInput)
+
+      const commentsInput = form.querySelector("textarea[name='comments']")
+      this.commentsFormElement = form.querySelector(".summary-comments")
+      // console.log(commentsInput)
+
+
+
 
       choiceElement.forEach((element) => {
         element.addEventListener("click", (event) => {
@@ -197,11 +226,32 @@ document.addEventListener("DOMContentLoaded", function() {
         this.data.bagsNumber = Number(event.target.value)
       })
 
+      addressInput.addEventListener("change", (event) => {
+        this.data.addressForm = event.target.value
+      })
+      cityInput.addEventListener("change", (event) => {
+        this.data.cityForm = event.target.value
+      })
+      postcodeInput.addEventListener("change", (event) => {
+        this.data.postcodeForm = event.target.value
+      })
+      phoneInput.addEventListener("change", (event) => {
+        this.data.phoneForm = event.target.value
+      })
+
+      timeInput.addEventListener("change", (event) => {
+        this.data.timeForm = event.target.value
+      })
+      dateInput.addEventListener("change", (event) => {
+        this.data.dateForm = event.target.value
+      })
+      commentsInput.addEventListener("change", (event) => {
+        this.data.commentsForm = event.target.value
+      })
+
 
       this.init();
     }
-
-
 
     /**
      * Init all methods
@@ -279,16 +329,18 @@ document.addEventListener("DOMContentLoaded", function() {
         const cityValue = document.querySelector('#city').value
         const postcodeValue = document.querySelector('#postcode').value
         const phoneValue = document.querySelector('#phone').value
-        // const dataValue = document.querySelector('#data').value
-        // const timeValue = document.querySelector('#time').value
-        // const moreInfoValue = document.querySelector('#more_info').value
-        // const bugs = document.querySelector('#bags').value
+
         this.bagsNumberElement.textContent = this.data.bagsNumber.toString()
+        // console.log(this.bagsNumberElement)
+        this.addressFormElement.textContent = this.data.addressForm.toString()
+        this.cityFormElement.textContent = this.data.cityForm.toString()
+        this.postcodeFormElement.textContent = this.data.postcodeForm.toString()
+        this.phoneFormElement.textContent = this.data.phoneForm.toString()
 
-        console.log(this.bagsNumberElement)
+        this.dateFormElement.textContent = this.data.dateForm.toString()
+        this.timeFormElement.textContent = this.data.timeForm.toString()
+        this.commentsFormElement.textContent = this.data.commentsForm.toString()
 
-
-        // console.log('step5', streetValue, cityValue, postcodeValue, phoneValue, dataValue, timeValue, moreInfoValue, bugs, this.selectedInstitution)
       }
       if (this.currentStep === 6 ) {
         console.log('step6')
