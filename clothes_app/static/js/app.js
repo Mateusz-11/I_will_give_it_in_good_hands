@@ -179,7 +179,9 @@ document.addEventListener("DOMContentLoaded", function() {
       const choiceElement = form.querySelectorAll("#choice");
       this.selectedCategories = [];
 
-      this.data = {bagsNumber: 0, addressForm: "", cityForm: "", postcodeForm: "", commentsForm: "", timeForm: "", phoneFormElement: "", dateForm: "", categoriesForm: ""};
+      const institutionElement = form.querySelectorAll("#institution-choice");
+
+      this.data = {bagsNumber: 0, addressForm: "", cityForm: "", postcodeForm: "", commentsForm: "", timeForm: "", phoneFormElement: "", dateForm: "", categoriesForm: "", organizationsForm: ""};
 
       const bagsInput = form.querySelector("input[name='bags']")
       this.bagsNumberElement = form.querySelector(".summary-bags-number")
@@ -213,11 +215,9 @@ document.addEventListener("DOMContentLoaded", function() {
       this.categoriesFormElement = form.querySelector(".summary-categories")
       console.log(categoriesInput)
 
-      // const categoriesInput = form.querySelector("input[name='categories']")
-      // this.categoriesFormElement = form.querySelector(".summary-categories")
-      // console.log(categoriesInput)
-
-
+      const organizationInput = form.querySelector("input[name='organization']")
+      this.organizationFormElement = form.querySelector(".summary-organization")
+      console.log(organizationInput)
 
 
       choiceElement.forEach((element) => {
@@ -265,8 +265,17 @@ document.addEventListener("DOMContentLoaded", function() {
       choiceElement.forEach((element) => {
         element.addEventListener("click", (event) => {
           if (element.checked) {
-            console.log("test click")
+            // console.log("test click")
             this.data.categoriesForm = event.target.dataset.catname
+          }
+        })
+      })
+
+      institutionElement.forEach((element) => {
+        element.addEventListener("click", (event) => {
+          if (element.checked) {
+            console.log("test click")
+            this.data.organizationsForm = event.target.dataset.orgname
           }
         })
       })
@@ -358,7 +367,9 @@ document.addEventListener("DOMContentLoaded", function() {
         this.timeFormElement.textContent = this.data.timeForm.toString()
         this.commentsFormElement.textContent = this.data.commentsForm.toString()
         this.categoriesFormElement.textContent = this.data.categoriesForm.toString()
-        console.log(this.categoriesFormElement)
+        // console.log(this.categoriesFormElement)
+        this.organizationFormElement.textContent = this.data.organizationsForm.toString()
+        console.log(this.organizationFormElement)
 
       }
 

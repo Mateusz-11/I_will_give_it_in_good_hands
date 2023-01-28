@@ -98,7 +98,7 @@
                     {% for institution in institutions %}
               <div class="form-group form-group--checkbox" id="institution" data-id="{% for cat in institution.categories.all %} {{ cat.id }} {% endfor %}">
                 <label>
-                  <input type="radio" name="organization" value="old" />
+                  <input type="radio" name="organization" id="institution-choice" value="old"  data-orgname="{{ institution }}"/>
                   <span class="checkbox radio"></span>
                   <span class="description">
                     <div class="title" id="category_id"> {{ institution }} </div>
@@ -185,9 +185,7 @@
 
                                 <li>
                                     <span class="icon icon-hand"></span>
-                                    <span class="summary--text"
-                                    >Dla fundacji "Mam marzenie" w Warszawie</span
-                                    >
+                                    <span class="summary--text">Dla: <span class="summary-organization"></span></span>
                                 </li>
                             </ul>
                         </div>
