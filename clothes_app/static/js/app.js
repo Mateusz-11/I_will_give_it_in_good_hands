@@ -210,9 +210,12 @@ document.addEventListener("DOMContentLoaded", function() {
       // console.log(commentsInput)
 
       const categoriesInput = form.querySelector("input[name='categories']")
-      // const categoriesInput = form.querySelector("span.description")
       this.categoriesFormElement = form.querySelector(".summary-categories")
       console.log(categoriesInput)
+
+      // const categoriesInput = form.querySelector("input[name='categories']")
+      // this.categoriesFormElement = form.querySelector(".summary-categories")
+      // console.log(categoriesInput)
 
 
 
@@ -263,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function() {
         element.addEventListener("click", (event) => {
           if (element.checked) {
             console.log("test click")
-            this.data.categoriesForm = event.target.value
+            this.data.categoriesForm = event.target.dataset.catname
           }
         })
       })
@@ -375,9 +378,10 @@ document.addEventListener("DOMContentLoaded", function() {
      * TODO: validation, send data to server
      */
     submit(e) {
-      e.preventDefault();
+      // e.preventDefault();
       this.currentStep++;
       this.updateForm();
+      console.log("Wysylam", this.currentStep)
     }
   }
   const form = document.querySelector(".form--steps");
