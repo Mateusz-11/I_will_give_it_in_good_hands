@@ -211,13 +211,13 @@ document.addEventListener("DOMContentLoaded", function() {
       this.commentsFormElement = form.querySelector(".summary-comments")
       // console.log(commentsInput)
 
-      const categoriesInput = form.querySelector("input[name='categories']")
+      // const categoriesInput = form.querySelector("input[name='categories']")
       this.categoriesFormElement = form.querySelector(".summary-categories")
-      console.log(categoriesInput)
+      // console.log(categoriesInput)
 
-      const organizationInput = form.querySelector("input[name='organization']")
+      // const organizationInput = form.querySelector("input[name='organization']")
       this.organizationFormElement = form.querySelector(".summary-organization")
-      console.log(organizationInput)
+      // console.log(organizationInput)
 
 
       choiceElement.forEach((element) => {
@@ -274,7 +274,7 @@ document.addEventListener("DOMContentLoaded", function() {
       institutionElement.forEach((element) => {
         element.addEventListener("click", (event) => {
           if (element.checked) {
-            console.log("test click")
+            // console.log("test click")
             this.data.organizationsForm = event.target.dataset.orgname
           }
         })
@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       if (this.currentStep === 4) {
-        console.log('step4')
+        // console.log('step4')
       }
       if (this.currentStep === 5) {
         this.bagsNumberElement.textContent = this.data.bagsNumber.toString()
@@ -369,12 +369,12 @@ document.addEventListener("DOMContentLoaded", function() {
         this.categoriesFormElement.textContent = this.data.categoriesForm.toString()
         // console.log(this.categoriesFormElement)
         this.organizationFormElement.textContent = this.data.organizationsForm.toString()
-        console.log(this.organizationFormElement)
+        // console.log(this.organizationFormElement)
 
       }
 
       if (this.currentStep === 6 ) {
-        console.log('step6')
+        // console.log('step6')
       }
 
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
@@ -392,7 +392,7 @@ document.addEventListener("DOMContentLoaded", function() {
       // e.preventDefault();
       this.currentStep++;
       this.updateForm();
-      console.log("Wysylam", this.currentStep)
+      // console.log("Wysylam", this.currentStep)
     }
   }
   const form = document.querySelector(".form--steps");
