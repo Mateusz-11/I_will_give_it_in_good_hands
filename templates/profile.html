@@ -30,10 +30,10 @@
                     <tr>
                     <td>{{ forloop.counter }}</td>
                     <td>{{ donation.quantity }}</td>
-                    <td>{{ donation.institution }} - {{ donation.id }}</td>
+                    <td>{{ donation.institution }}</td>
                     <td>{% for cat in donation.categories.all %}{{ cat.name }}{% endfor %}</td>
                     <td>{{ donation.pick_up_date }}</td>
-                    <td>{{ donation.pick_up_time }}</td>
+                    <td>{{ donation.pick_up_time }}</td>s
                     <td>
                         {% if donation.is_taken == False %}
                             <span style="color: red">{{ donation.is_taken }}</span>
@@ -43,10 +43,10 @@
                     </td>
                     <td>
                         {% if donation.is_taken == False %}
-                            <form action="#" method="post" style="margin-top: 0px;">
+                            <form action="" method="post" style="margin-top: 0px;">
                                 {% csrf_token %}
                                 <div class="form-group form-group--buttons" style="margin-top: 0px;">
-                                    <button class="btn btn--small" type="submit">Przekazano</button>
+                                    <button class="btn btn--small" type="submit" name="changeIstaken" value="{{ donation.id }}">Przekazano</button>
                                 </div>
 
                             </form>

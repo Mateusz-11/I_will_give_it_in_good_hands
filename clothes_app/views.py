@@ -173,9 +173,14 @@ class ProfileView(LoginRequiredMixin, View):
             }
             return render(request, 'profile.html', ctx)
 
+
     def post(self, request):
         user = request.user
         if user.is_authenticated:
+            donation_id = request.POST.get("changeIstaken")
+            donation_update = Donation.objects.get(id=donation_id)
+            donation_update.is_taken = True
+            donation_update.save()
             donations = Donation.objects.filter(user=request.user).order_by("is_taken", "pick_up_date")
             ctx = {
                 'user': user,
