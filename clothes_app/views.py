@@ -58,6 +58,8 @@ class AddDonationView(LoginRequiredMixin, View):
     def post(self, request):
         institution_name = request.POST.get("organization")
         institution = get_object_or_404(Institution, name=institution_name)
+        categories_id = request.POST.getlist('categories')
+        categories = Category.objects.filter(id__in=categories_id).distinct()
         quantity = request.POST.get("bags")
         street_address = request.POST.get("address")
         city = request.POST.get("city")
@@ -71,6 +73,7 @@ class AddDonationView(LoginRequiredMixin, View):
                                                phone_number=int(phone), pick_up_date=data,
                                                pick_up_time=time, pick_up_comment=pick_up_comment)
         donation_add.user = request.user
+        donation_add.categories.add(*categories)
         donation_add.save()
         return redirect('add_donation_confirmation')
 
