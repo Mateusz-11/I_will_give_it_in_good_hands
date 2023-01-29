@@ -81,8 +81,8 @@
 
                     <div class="form-group form-group--inline">
                         <label>
-                            Liczba 60l worków:
-                            <input type="number" name="bags" step="1" min="1"/>
+                            Liczba worków (60l):
+                            <input type="number" name="bags" step="1" min="1" placeholder="Wprowadź liczbę" required/>
                         </label>
                     </div>
 
@@ -129,22 +129,22 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru</h4>
                             <div class="form-group form-group--inline">
-                                <label> Ulica <input type="text" name="address" id="street"/> </label>
+                                <label> Ulica <input type="text" name="address" id="street" placeholder="Ulica" required /> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
-                                <label> Miasto <input type="text" name="city" id="city"/> </label>
+                                <label> Miasto <input type="text" name="city" id="city" placeholder="Miasto" required/> </label>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
-                                    Kod pocztowy <input type="text" name="postcode" id="postcode"/>
+                                    Kod pocztowy <input type="text" name="postcode" id="postcode"  placeholder="XX-XXX" required/>
                                 </label>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
-                                    Numer telefonu <input type="phone" name="phone" id="phone"/>
+                                    Numer telefonu <input type="phone" name="phone" id="phone" placeholder="XXXXXXXXX" required/>
                                 </label>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                             <div class="form-group form-group--inline">
                                 <label>
                                     Uwagi dla kuriera
-                                    <textarea name="comments" rows="5"></textarea>
+                                    <textarea name="comments" rows="5" placeholder="Uwagi dla kuriera"></textarea>
                                 </label>
                             </div>
                         </div>
