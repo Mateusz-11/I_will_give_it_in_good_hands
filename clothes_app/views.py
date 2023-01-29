@@ -161,7 +161,22 @@ class ProfileView(LoginRequiredMixin, View):
     def get(self, request):
         user = request.user
         if user.is_authenticated:
-            donations = Donation.objects.filter(user=request.user)
+            donations = Donation.objects.filter(user=request.user).order_by("is_taken", "pick_up_date")
+            ctx = {
+                'user': user,
+                'donations': donations,
+            }
+            return render(request, 'profile.html', ctx)
+        else:
+            ctx = {
+                'msg': 'Widok tylko dla zalogowanych',
+            }
+            return render(request, 'profile.html', ctx)
+
+    def post(self, request):
+        user = request.user
+        if user.is_authenticated:
+            donations = Donation.objects.filter(user=request.user).order_by("is_taken", "pick_up_date")
             ctx = {
                 'user': user,
                 'donations': donations,
