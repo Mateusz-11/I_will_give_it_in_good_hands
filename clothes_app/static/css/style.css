@@ -376,6 +376,10 @@ template {
   display: none;
 }
 
+.hidden {
+  display: none;
+}
+
 /**
  * COLORS
  */
@@ -725,6 +729,11 @@ form .form-group--dropdown ul li:not(:first-of-type) {
 form .form-group--dropdown ul li:last-of-type {
   margin-bottom: 0;
 }
+
+.form-group.form-error {
+  color: red;
+}
+
 
 /* line 173, scss/modules/_forms.scss */
 form .form-section h4 {

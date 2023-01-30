@@ -319,6 +319,18 @@ document.addEventListener("DOMContentLoaded", function() {
       // Form submit
       this.$form.querySelector("form").addEventListener("submit", e => this.submit(e));
     }
+    // validateForm() {
+    //   let isValid = false
+    //   if (this.currentStep === 1) {
+    //     const checkboxesCategory =  document.querySelectorAll('input[name="categories"]:checked');
+    //   }
+    //   if (isValid) {
+    //     this.currentStep++
+    //   }
+    //   else {
+    //
+    //   }
+    // }
 
     /**
      * Update form front-end
