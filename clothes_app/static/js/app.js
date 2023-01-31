@@ -219,6 +219,9 @@ document.addEventListener("DOMContentLoaded", function() {
       this.organizationFormElement = form.querySelector(".summary-organization")
       // console.log(organizationInput)
 
+      // Validation Elements
+      const errormsgElement = document.querySelector("div.form-group.form-error.hidden")
+      console.log(errormsgElement)
 
       choiceElement.forEach((element) => {
         element.addEventListener("click", (event) => {
@@ -302,7 +305,11 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$next.forEach(btn => {
         btn.addEventListener("click", e => {
           e.preventDefault();
-          this.currentStep++;
+          // this.currentStep++;
+          const isStepValid = this.validateForm();
+          if (isStepValid) {
+            this.currentStep++;
+          }
           this.updateForm();
         });
       });
@@ -319,18 +326,28 @@ document.addEventListener("DOMContentLoaded", function() {
       // Form submit
       this.$form.querySelector("form").addEventListener("submit", e => this.submit(e));
     }
-    // validateForm() {
-    //   let isValid = false
-    //   if (this.currentStep === 1) {
-    //     const checkboxesCategory =  document.querySelectorAll('input[name="categories"]:checked');
-    //   }
-    //   if (isValid) {
-    //     this.currentStep++
-    //   }
-    //   else {
-    //
-    //   }
-    // }
+    validateForm() {
+      let isValid = false
+      if (this.currentStep === 1) {
+        const checkboxesCategory =  document.querySelectorAll("input[name='categories']:checked");
+        console.log(checkboxesCategory);
+        if (checkboxesCategory.length > 0) {
+          // console.log(checkboxesCategory)
+          isValid = true
+          // console.log(isValid)
+        }
+      }
+      if (isValid) {
+
+      }
+      else {
+        errormsgElement.classList.remove("hidden");
+        console.log(errormsgElement)
+
+      }
+      return isValid;
+
+    }
 
     /**
      * Update form front-end
