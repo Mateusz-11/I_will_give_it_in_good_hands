@@ -730,7 +730,9 @@ form .form-group--dropdown ul li:last-of-type {
   margin-bottom: 0;
 }
 
-.form-group.form-error__checkbox, .form-group.form-error__bags {
+.form-group.form-error__checkbox,
+.form-group.form-error__bags,
+.form-group.form-error__institution {
   color: red;
 }
 

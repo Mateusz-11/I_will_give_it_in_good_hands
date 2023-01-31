@@ -239,6 +239,9 @@ document.addEventListener("DOMContentLoaded", function () {
             this.errormsgElementStep2 = document.querySelector("div.form-group.form-error__bags.hidden")
             console.log(this.errormsgElementStep2)
 
+            this.errormsgElementStep3 = document.querySelector("div.form-group.form-error__institution.hidden")
+            console.log(this.errormsgElementStep3)
+
             choiceElement.forEach((element) => {
                 element.addEventListener("click", (event) => {
                     if (element.checked) {
@@ -376,6 +379,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(this.errormsgElementStep2)
                 }
             }
+
+            if (this.currentStep === 3) {
+                const checkboxesInstitution = document.querySelectorAll("input[name='organization']:checked");
+                console.log(checkboxesInstitution);
+                if (checkboxesInstitution.length === 0) {
+                    // console.log(checkboxesInstitution)
+                    isValid = false
+                    // console.log(isValid)
+                }
+                if (isValid) {
+                }
+                else {
+                    this.errormsgElementStep3.classList.remove("hidden");
+                    console.log(this.errormsgElementStep3)
+                }
+            }
+
             return isValid;
         }
 
