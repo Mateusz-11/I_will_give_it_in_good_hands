@@ -220,8 +220,8 @@ document.addEventListener("DOMContentLoaded", function() {
       // console.log(organizationInput)
 
       // Validation Elements
-      const errormsgElement = document.querySelector("div.form-group.form-error.hidden")
-      console.log(errormsgElement)
+      this.errormsgElement = document.querySelector("div.form-group.form-error.hidden")
+      console.log(this.errormsgElement)
 
       choiceElement.forEach((element) => {
         element.addEventListener("click", (event) => {
@@ -327,13 +327,13 @@ document.addEventListener("DOMContentLoaded", function() {
       this.$form.querySelector("form").addEventListener("submit", e => this.submit(e));
     }
     validateForm() {
-      let isValid = false
+      let isValid = true
       if (this.currentStep === 1) {
         const checkboxesCategory =  document.querySelectorAll("input[name='categories']:checked");
         console.log(checkboxesCategory);
-        if (checkboxesCategory.length > 0) {
+        if (checkboxesCategory.length === 0) {
           // console.log(checkboxesCategory)
-          isValid = true
+          isValid = false
           // console.log(isValid)
         }
       }
@@ -341,8 +341,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
       }
       else {
-        errormsgElement.classList.remove("hidden");
-        console.log(errormsgElement)
+        this.errormsgElement.classList.remove("hidden");
+        console.log(this.errormsgElement)
 
       }
       return isValid;
