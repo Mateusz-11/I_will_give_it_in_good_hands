@@ -233,10 +233,10 @@ document.addEventListener("DOMContentLoaded", function () {
             // console.log(organizationInput)
 
             // Validation Elements
-            this.errormsgElementStep1 = document.querySelector("div.form-group.form-error-step1.hidden")
+            this.errormsgElementStep1 = document.querySelector("div.form-group.form-error__checkbox.hidden")
             console.log(this.errormsgElementStep1)
 
-            this.errormsgElementStep2 = document.querySelector("div.form-group.form-error-step2.hidden")
+            this.errormsgElementStep2 = document.querySelector("div.form-group.form-error__bags.hidden")
             console.log(this.errormsgElementStep2)
 
             choiceElement.forEach((element) => {
@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if (this.currentStep === 2) {
                 const inputBags = document.querySelector("input[name='bags']").value;
                 console.log(inputBags)
-                if (inputBags >= 1) {
+                if (inputBags <= 1) {
                     console.log(inputBags)
                     isValid = false
                     console.log(isValid)
@@ -376,7 +376,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(this.errormsgElementStep2)
                 }
             }
-
             return isValid;
         }
 
