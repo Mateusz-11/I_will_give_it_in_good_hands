@@ -428,7 +428,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 else {
                     this.errormsgElementStep4City.classList.remove("hidden");
-                    console.log(this.errormsgElementStep4City)
+                    // console.log(this.errormsgElementStep4City)
                 }
 
             }
