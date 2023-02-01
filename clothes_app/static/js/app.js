@@ -258,7 +258,10 @@ document.addEventListener("DOMContentLoaded", function () {
             // console.log(this.errormsgElementStep4Date)
 
             this.errormsgElementStep4Time = document.querySelector("div.form-group.form-error__time")
-            console.log(this.errormsgElementStep4Time)
+            // console.log(this.errormsgElementStep4Time)
+
+            this.errormsgElementStep4Comments = document.querySelector("div.form-group.form-error__comments")
+            console.log(this.errormsgElementStep4Comments)
 
             choiceElement.forEach((element) => {
                 element.addEventListener("click", (event) => {
@@ -504,6 +507,22 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     this.errormsgElementStep4Time.classList.remove("hidden");
                     console.log(this.errormsgElementStep4Time)
+                }
+
+                const inputComments = document.querySelector("textarea[name='comments']").value;
+                console.log(inputComments);
+                if (inputComments.length > 30) {
+                    console.log(inputComments)
+                    isValid = false
+                    console.log(isValid)
+                }
+                if (isValid) {
+                    this.errormsgElementStep4Comments.classList.add("hidden");
+                    console.log(this.errormsgElementStep4Comments)
+
+                } else {
+                    this.errormsgElementStep4Comments.classList.remove("hidden");
+                    console.log(this.errormsgElementStep4Comments)
                 }
 
             }

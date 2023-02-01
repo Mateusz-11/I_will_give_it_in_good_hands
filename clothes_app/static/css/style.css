@@ -738,7 +738,8 @@ form .form-group--dropdown ul li:last-of-type {
 .form-group.form-error__postcode,
 .form-group.form-error__date,
 .form-group.form-error__phone,
-.form-group.form-error__time {
+.form-group.form-error__time,
+.form-group.form-error__comments {
   color: red;
 }
 
