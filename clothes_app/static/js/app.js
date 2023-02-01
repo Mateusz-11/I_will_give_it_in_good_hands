@@ -248,6 +248,9 @@ document.addEventListener("DOMContentLoaded", function () {
             this.errormsgElementStep4City = document.querySelector("div.form-group.form-error__city")
             console.log(this.errormsgElementStep4City)
 
+            this.errormsgElementStep4Postcode = document.querySelector("div.form-group.form-error__postcode")
+            console.log(this.errormsgElementStep4Postcode)
+
             choiceElement.forEach((element) => {
                 element.addEventListener("click", (event) => {
                     if (element.checked) {
@@ -363,8 +366,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // console.log(isValid)
                 }
                 if (isValid) {
-                }
-                else {
+                } else {
                     this.errormsgElementStep1.classList.remove("hidden");
                     // console.log(this.errormsgElementStep1)
                 }
@@ -379,8 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // console.log(isValid)
                 }
                 if (isValid) {
-                }
-                else {
+                } else {
                     this.errormsgElementStep2.classList.remove("hidden");
                     // console.log(this.errormsgElementStep2)
                 }
@@ -395,8 +396,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // console.log(isValid)
                 }
                 if (isValid) {
-                }
-                else {
+                } else {
                     this.errormsgElementStep3.classList.remove("hidden");
                     // console.log(this.errormsgElementStep3)
                 }
@@ -411,8 +411,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(isValid)
                 }
                 if (isValid) {
-                }
-                else {
+                } else {
                     this.errormsgElementStep4Adrdress.classList.remove("hidden");
                     console.log(this.errormsgElementStep4Adrdress)
                 }
@@ -425,10 +424,22 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(isValid)
                 }
                 if (isValid) {
-                }
-                else {
+                } else {
                     this.errormsgElementStep4City.classList.remove("hidden");
-                    // console.log(this.errormsgElementStep4City)
+                    console.log(this.errormsgElementStep4City)
+                }
+
+                const inputPostcode = document.querySelector("input[name='postcode']").value;
+                console.log(inputPostcode);
+                if (inputPostcode <= 1) {
+                    console.log(inputPostcode)
+                    isValid = false
+                    console.log(isValid)
+                }
+                if (isValid) {
+                } else {
+                    this.errormsgElementStep4Postcode.classList.remove("hidden");
+                    console.log(this.errormsgElementStep4Postcode)
                 }
 
             }
