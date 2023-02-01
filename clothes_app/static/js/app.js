@@ -422,7 +422,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (inputCity <= 1) {
                     console.log(inputCity)
                     isValid = false
-                    // console.log(isValid)
+                    console.log(isValid)
                 }
                 if (isValid) {
                 }
