@@ -107,7 +107,8 @@
                         <div class="form-group form-group--checkbox" id="institution"
                              data-id="{% for cat in institution.categories.all %} {{ cat.id }} {% endfor %}">
                             <label>
-                                <input type="radio" name="organization" id="institution-choice" value="{{ institution }}"
+                                <input type="radio" name="organization" id="institution-choice"
+                                       value="{{ institution }}"
                                        data-orgname="{{ institution }}"/>
                                 <span class="checkbox radio"></span>
                                 <span class="description">
@@ -138,22 +139,32 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru</h4>
                             <div class="form-group form-group--inline">
-                                <label> Ulica i nr budynku <input type="text" name="address" id="street" placeholder="Ulica i nr budynku" required /> </label>
+                                <label> Ulica i nr budynku <input type="text" name="address" id="street"
+                                                                  placeholder="Ulica i nr budynku" required/> </label>
+                            </div>
+                            <div class="form-group form-error__address hidden">
+                                <span>Wpisz ulice i numer budynku</span>
                             </div>
 
                             <div class="form-group form-group--inline">
-                                <label> Miasto <input type="text" name="city" id="city" placeholder="Miasto" required/> </label>
+                                <label> Miasto <input type="text" name="city" id="city" placeholder="Miasto" required/>
+                                </label>
+                            </div>
+                            <div class="form-group form-error__city hidden">
+                                <span>Wpisz miasto</span>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
-                                    Kod pocztowy <input type="text" name="postcode" id="postcode"  placeholder="XX-XXX" required/>
+                                    Kod pocztowy <input type="text" name="postcode" id="postcode" placeholder="XX-XXX"
+                                                        required/>
                                 </label>
                             </div>
 
                             <div class="form-group form-group--inline">
                                 <label>
-                                    Numer telefonu <input type="phone" name="phone" id="phone" placeholder="XXXXXXXXX" required/>
+                                    Numer telefonu <input type="phone" name="phone" id="phone" placeholder="XXXXXXXXX"
+                                                          required/>
                                 </label>
                             </div>
                         </div>
@@ -176,6 +187,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="form-group form-group--buttons">
                         <button type="button" class="btn prev-step">Wstecz</button>
                         <button type="button" class="btn next-step">Dalej</button>

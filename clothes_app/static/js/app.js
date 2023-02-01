@@ -233,14 +233,20 @@ document.addEventListener("DOMContentLoaded", function () {
             // console.log(organizationInput)
 
             // Validation Elements
-            this.errormsgElementStep1 = document.querySelector("div.form-group.form-error__checkbox.hidden")
-            console.log(this.errormsgElementStep1)
+            this.errormsgElementStep1 = document.querySelector("div.form-group.form-error__checkbox")
+            // console.log(this.errormsgElementStep1)
 
-            this.errormsgElementStep2 = document.querySelector("div.form-group.form-error__bags.hidden")
-            console.log(this.errormsgElementStep2)
+            this.errormsgElementStep2 = document.querySelector("div.form-group.form-error__bags")
+            // console.log(this.errormsgElementStep2)
 
-            this.errormsgElementStep3 = document.querySelector("div.form-group.form-error__institution.hidden")
-            console.log(this.errormsgElementStep3)
+            this.errormsgElementStep3 = document.querySelector("div.form-group.form-error__institution")
+            // console.log(this.errormsgElementStep3)
+
+            this.errormsgElementStep4Adrdress = document.querySelector("div.form-group.form-error__address")
+            console.log(this.errormsgElementStep4Adrdress)
+
+            this.errormsgElementStep4City = document.querySelector("div.form-group.form-error__city")
+            console.log(this.errormsgElementStep4City)
 
             choiceElement.forEach((element) => {
                 element.addEventListener("click", (event) => {
@@ -350,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (this.currentStep === 1) {
                 const checkboxesCategory = document.querySelectorAll("input[name='categories']:checked");
-                console.log(checkboxesCategory);
+                // console.log(checkboxesCategory);
                 if (checkboxesCategory.length === 0) {
                     // console.log(checkboxesCategory)
                     isValid = false
@@ -360,29 +366,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 else {
                     this.errormsgElementStep1.classList.remove("hidden");
-                    console.log(this.errormsgElementStep1)
+                    // console.log(this.errormsgElementStep1)
                 }
             }
 
             if (this.currentStep === 2) {
                 const inputBags = document.querySelector("input[name='bags']").value;
-                console.log(inputBags)
+                // console.log(inputBags)
                 if (inputBags <= 1) {
-                    console.log(inputBags)
+                    // console.log(inputBags)
                     isValid = false
-                    console.log(isValid)
+                    // console.log(isValid)
                 }
                 if (isValid) {
                 }
                 else {
                     this.errormsgElementStep2.classList.remove("hidden");
-                    console.log(this.errormsgElementStep2)
+                    // console.log(this.errormsgElementStep2)
                 }
             }
 
             if (this.currentStep === 3) {
                 const checkboxesInstitution = document.querySelectorAll("input[name='organization']:checked");
-                console.log(checkboxesInstitution);
+                // console.log(checkboxesInstitution);
                 if (checkboxesInstitution.length === 0) {
                     // console.log(checkboxesInstitution)
                     isValid = false
@@ -392,8 +398,39 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 else {
                     this.errormsgElementStep3.classList.remove("hidden");
-                    console.log(this.errormsgElementStep3)
+                    // console.log(this.errormsgElementStep3)
                 }
+            }
+
+            if (this.currentStep === 4) {
+                const inputAddress = document.querySelector("input[name='address']").value;
+                console.log(inputAddress);
+                if (inputAddress <= 1) {
+                    console.log(inputAddress)
+                    isValid = false
+                    console.log(isValid)
+                }
+                if (isValid) {
+                }
+                else {
+                    this.errormsgElementStep4Adrdress.classList.remove("hidden");
+                    console.log(this.errormsgElementStep4Adrdress)
+                }
+
+                const inputCity = document.querySelector("input[name='city']").value;
+                console.log(inputCity);
+                if (inputCity <= 1) {
+                    console.log(inputCity)
+                    isValid = false
+                    console.log(isValid)
+                }
+                if (isValid) {
+                }
+                else {
+                    this.errormsgElementStep4City.classList.remove("hidden");
+                    console.log(this.errormsgElementStep4City)
+                }
+
             }
 
             return isValid;
