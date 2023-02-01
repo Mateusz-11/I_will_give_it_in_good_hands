@@ -339,8 +339,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     const isStepValid = this.validateForm();
                     if (isStepValid) {
                         this.currentStep++;
+                        this.updateForm();
                     }
-                    this.updateForm();
                 });
             });
 
@@ -414,6 +414,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(isValid)
                 }
                 if (isValid) {
+                    this.errormsgElementStep4Adrdress.classList.add("hidden");
+
                 } else {
                     this.errormsgElementStep4Adrdress.classList.remove("hidden");
                     console.log(this.errormsgElementStep4Adrdress)
@@ -427,6 +429,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(isValid)
                 }
                 if (isValid) {
+                    this.errormsgElementStep4City.classList.add("hidden");
+
                 } else {
                     this.errormsgElementStep4City.classList.remove("hidden");
                     console.log(this.errormsgElementStep4City)
@@ -440,6 +444,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(isValid)
                 }
                 if (isValid) {
+                    this.errormsgElementStep4Postcode.classList.add("hidden");
+
                 } else {
                     this.errormsgElementStep4Postcode.classList.remove("hidden");
                     console.log(this.errormsgElementStep4Postcode)
@@ -453,6 +459,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     console.log(isValid)
                 }
                 if (isValid) {
+                    this.errormsgElementStep4Phone.classList.add("hidden");
+
                 } else {
                     this.errormsgElementStep4Phone.classList.remove("hidden");
                     console.log(this.errormsgElementStep4Phone)
