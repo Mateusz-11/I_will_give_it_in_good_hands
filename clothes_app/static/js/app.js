@@ -243,16 +243,22 @@ document.addEventListener("DOMContentLoaded", function () {
             // console.log(this.errormsgElementStep3)
 
             this.errormsgElementStep4Adrdress = document.querySelector("div.form-group.form-error__address")
-            console.log(this.errormsgElementStep4Adrdress)
+            // console.log(this.errormsgElementStep4Adrdress)
 
             this.errormsgElementStep4City = document.querySelector("div.form-group.form-error__city")
-            console.log(this.errormsgElementStep4City)
+            // console.log(this.errormsgElementStep4City)
 
             this.errormsgElementStep4Postcode = document.querySelector("div.form-group.form-error__postcode")
-            console.log(this.errormsgElementStep4Postcode)
+            // console.log(this.errormsgElementStep4Postcode)
 
             this.errormsgElementStep4Phone = document.querySelector("div.form-group.form-error__phone")
-            console.log(this.errormsgElementStep4Phone)
+            // console.log(this.errormsgElementStep4Phone)
+
+            this.errormsgElementStep4Date = document.querySelector("div.form-group.form-error__date")
+            // console.log(this.errormsgElementStep4Date)
+
+            this.errormsgElementStep4Time = document.querySelector("div.form-group.form-error__time")
+            console.log(this.errormsgElementStep4Time)
 
             choiceElement.forEach((element) => {
                 element.addEventListener("click", (event) => {
@@ -452,6 +458,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 const inputPhone = document.querySelector("input[name='phone']").value;
+                // const inputPhone = document.getElementById("phone").value;
                 console.log(inputPhone);
                 if (inputPhone <= 1) {
                     console.log(inputPhone)
@@ -460,10 +467,43 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 if (isValid) {
                     this.errormsgElementStep4Phone.classList.add("hidden");
+                    console.log(this.errormsgElementStep4Phone)
 
                 } else {
                     this.errormsgElementStep4Phone.classList.remove("hidden");
                     console.log(this.errormsgElementStep4Phone)
+                }
+
+                const inputDate = document.querySelector("input[name='date']").value;
+                console.log(inputDate);
+                if (inputDate <= 1) {
+                    console.log(inputDate)
+                    isValid = false
+                    console.log(isValid)
+                }
+                if (isValid) {
+                    this.errormsgElementStep4Date.classList.add("hidden");
+                    console.log(this.errormsgElementStep4Date)
+
+                } else {
+                    this.errormsgElementStep4Date.classList.remove("hidden");
+                    console.log(this.errormsgElementStep4Date)
+                }
+
+                const inputTime = document.querySelector("input[name='time']").value;
+                console.log(inputTime);
+                if (inputTime <= 1) {
+                    console.log(inputTime)
+                    isValid = false
+                    console.log(isValid)
+                }
+                if (isValid) {
+                    this.errormsgElementStep4Time.classList.add("hidden");
+                    console.log(this.errormsgElementStep4Time)
+
+                } else {
+                    this.errormsgElementStep4Time.classList.remove("hidden");
+                    console.log(this.errormsgElementStep4Time)
                 }
 
             }
