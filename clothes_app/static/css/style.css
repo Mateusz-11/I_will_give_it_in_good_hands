@@ -735,7 +735,8 @@ form .form-group--dropdown ul li:last-of-type {
 .form-group.form-error__institution,
 .form-group.form-error__address,
 .form-group.form-error__city,
-.form-group.form-error__postcode {
+.form-group.form-error__postcode,
+.form-group.form-error__phone {
   color: red;
 }
 

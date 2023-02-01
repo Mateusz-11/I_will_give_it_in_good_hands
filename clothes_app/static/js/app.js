@@ -251,6 +251,9 @@ document.addEventListener("DOMContentLoaded", function () {
             this.errormsgElementStep4Postcode = document.querySelector("div.form-group.form-error__postcode")
             console.log(this.errormsgElementStep4Postcode)
 
+            this.errormsgElementStep4Phone = document.querySelector("div.form-group.form-error__phone")
+            console.log(this.errormsgElementStep4Phone)
+
             choiceElement.forEach((element) => {
                 element.addEventListener("click", (event) => {
                     if (element.checked) {
@@ -440,6 +443,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     this.errormsgElementStep4Postcode.classList.remove("hidden");
                     console.log(this.errormsgElementStep4Postcode)
+                }
+
+                const inputPhone = document.querySelector("input[name='phone']").value;
+                console.log(inputPhone);
+                if (inputPhone <= 1) {
+                    console.log(inputPhone)
+                    isValid = false
+                    console.log(isValid)
+                }
+                if (isValid) {
+                } else {
+                    this.errormsgElementStep4Phone.classList.remove("hidden");
+                    console.log(this.errormsgElementStep4Phone)
                 }
 
             }
