@@ -653,8 +653,11 @@ form .form-group--checkbox .description .title {
 form .form-group--checkbox .description .subtitle {
   font-family: 'Merriweather', serif;
   font-weight: 300;
-  font-style: light;
   font-size: 1.2rem;
+}
+
+form .form-group--checkbox .description .subtitle {
+  font-style: light;
 }
 
 /* line 104, scss/modules/_forms.scss */
