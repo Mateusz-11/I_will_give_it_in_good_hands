@@ -418,24 +418,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 const inputAddress = document.querySelector("input[name='address']").value;
                 console.log(inputAddress);
                 if (inputAddress <= 1) {
-                    console.log(inputAddress)
+                    // console.log(inputAddress)
                     isValid = false
-                    console.log(isValid)
+                    // console.log(isValid)
                 }
                 if (isValid) {
                     this.errormsgElementStep4Adrdress.classList.add("hidden");
 
                 } else {
                     this.errormsgElementStep4Adrdress.classList.remove("hidden");
-                    console.log(this.errormsgElementStep4Adrdress)
+                    // console.log(this.errormsgElementStep4Adrdress)
                 }
 
                 const inputCity = document.querySelector("input[name='city']").value;
-                console.log(inputCity);
+                // console.log(inputCity);
                 if (inputCity <= 1) {
-                    console.log(inputCity)
+                    // console.log(inputCity)
                     isValid = false
-                    console.log(isValid)
+                    // console.log(isValid)
                 }
                 if (isValid) {
                     this.errormsgElementStep4City.classList.add("hidden");
@@ -448,9 +448,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const inputPostcode = document.querySelector("input[name='postcode']").value;
                 console.log(inputPostcode);
                 if (inputPostcode <= 1) {
-                    console.log(inputPostcode)
                     isValid = false
-                    console.log(isValid)
                 }
                 if (isValid) {
                     this.errormsgElementStep4Postcode.classList.add("hidden");
