@@ -210,58 +210,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const phoneInput = form.querySelector("input[name='phone']")
             this.phoneFormElement = form.querySelector(".summary-phone")
-            // console.log(phoneInput)
 
             const dateInput = form.querySelector("input[name='date']")
             this.dateFormElement = form.querySelector(".summary-date")
-            // console.log(dateInput)
 
             const timeInput = form.querySelector("input[name='time']")
             this.timeFormElement = form.querySelector(".summary-time")
-            // console.log(timeInput)
 
             const commentsInput = form.querySelector("textarea[name='comments']")
             this.commentsFormElement = form.querySelector(".summary-comments")
-            // console.log(commentsInput)
 
-            // const categoriesInput = form.querySelector("input[name='categories']")
             this.categoriesFormElement = form.querySelector(".summary-categories")
-            // console.log(categoriesInput)
 
-            // const organizationInput = form.querySelector("input[name='organization']")
             this.organizationFormElement = form.querySelector(".summary-organization")
-            // console.log(organizationInput)
 
             // Validation Elements
             this.errormsgElementStep1 = document.querySelector("div.form-group.form-error__checkbox")
-            // console.log(this.errormsgElementStep1)
 
             this.errormsgElementStep2 = document.querySelector("div.form-group.form-error__bags")
-            // console.log(this.errormsgElementStep2)
 
             this.errormsgElementStep3 = document.querySelector("div.form-group.form-error__institution")
-            // console.log(this.errormsgElementStep3)
 
             this.errormsgElementStep4Adrdress = document.querySelector("div.form-group.form-error__address")
-            // console.log(this.errormsgElementStep4Adrdress)
 
             this.errormsgElementStep4City = document.querySelector("div.form-group.form-error__city")
-            // console.log(this.errormsgElementStep4City)
 
             this.errormsgElementStep4Postcode = document.querySelector("div.form-group.form-error__postcode")
-            // console.log(this.errormsgElementStep4Postcode)
 
             this.errormsgElementStep4Phone = document.querySelector("div.form-group.form-error__phone")
-            // console.log(this.errormsgElementStep4Phone)
 
             this.errormsgElementStep4Date = document.querySelector("div.form-group.form-error__date")
-            // console.log(this.errormsgElementStep4Date)
 
             this.errormsgElementStep4Time = document.querySelector("div.form-group.form-error__time")
-            // console.log(this.errormsgElementStep4Time)
 
             this.errormsgElementStep4Comments = document.querySelector("div.form-group.form-error__comments")
-            console.log(this.errormsgElementStep4Comments)
 
             choiceElement.forEach((element) => {
                 element.addEventListener("click", (event) => {
@@ -299,11 +281,6 @@ document.addEventListener("DOMContentLoaded", function () {
             commentsInput.addEventListener("change", (event) => {
                 this.data.commentsForm = event.target.value
             })
-
-            // categoriesInput.addEventListener("click", (event) => {
-            //   this.data.categoriesForm = event.target.value;
-            //   console.log("test click")
-            // })
 
             choiceElement.forEach((element) => {
                 element.addEventListener("click", (event) => {
