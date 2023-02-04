@@ -378,7 +378,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     // console.log(isValid)
                 }
                 if (isValid) {
-                } else {
+                }
+                else {
                     this.errormsgElementStep1.classList.remove("hidden");
                     // console.log(this.errormsgElementStep1)
                 }
@@ -386,16 +387,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (this.currentStep === 2) {
                 const inputBags = document.querySelector("input[name='bags']").value;
-                // console.log(inputBags)
                 if (inputBags <= 1) {
-                    // console.log(inputBags)
                     isValid = false
-                    // console.log(isValid)
                 }
                 if (isValid) {
-                } else {
+                }
+                else {
                     this.errormsgElementStep2.classList.remove("hidden");
-                    // console.log(this.errormsgElementStep2)
                 }
             }
 
@@ -408,15 +406,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     // console.log(isValid)
                 }
                 if (isValid) {
-                } else {
+                }
+                else {
                     this.errormsgElementStep3.classList.remove("hidden");
-                    // console.log(this.errormsgElementStep3)
                 }
             }
 
             if (this.currentStep === 4) {
                 const inputAddress = document.querySelector("input[name='address']").value;
-                console.log(inputAddress);
+                // console.log(inputAddress);
                 if (inputAddress <= 1) {
                     // console.log(inputAddress)
                     isValid = false
@@ -424,107 +422,78 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 if (isValid) {
                     this.errormsgElementStep4Adrdress.classList.add("hidden");
-
-                } else {
+                }
+                else {
                     this.errormsgElementStep4Adrdress.classList.remove("hidden");
                     // console.log(this.errormsgElementStep4Adrdress)
                 }
 
                 const inputCity = document.querySelector("input[name='city']").value;
-                // console.log(inputCity);
                 if (inputCity <= 1) {
-                    // console.log(inputCity)
                     isValid = false
-                    // console.log(isValid)
                 }
                 if (isValid) {
                     this.errormsgElementStep4City.classList.add("hidden");
-
-                } else {
+                }
+                else {
                     this.errormsgElementStep4City.classList.remove("hidden");
-                    console.log(this.errormsgElementStep4City)
                 }
 
                 const inputPostcode = document.querySelector("input[name='postcode']").value;
-                console.log(inputPostcode);
                 if (inputPostcode <= 1) {
                     isValid = false
                 }
                 if (isValid) {
                     this.errormsgElementStep4Postcode.classList.add("hidden");
-
-                } else {
+                }
+                else {
                     this.errormsgElementStep4Postcode.classList.remove("hidden");
-                    console.log(this.errormsgElementStep4Postcode)
                 }
 
                 const inputPhone = document.querySelector("input[name='phone']").value;
-                // const inputPhone = document.getElementById("phone").value;
-                console.log(inputPhone);
                 if (inputPhone <= 1) {
-                    console.log(inputPhone)
                     isValid = false
-                    console.log(isValid)
                 }
                 if (isValid) {
                     this.errormsgElementStep4Phone.classList.add("hidden");
-                    console.log(this.errormsgElementStep4Phone)
-
-                } else {
+                }
+                else {
                     this.errormsgElementStep4Phone.classList.remove("hidden");
-                    console.log(this.errormsgElementStep4Phone)
                 }
 
                 const inputDate = document.querySelector("input[name='date']").value;
-                console.log(inputDate);
                 if (inputDate <= 1) {
-                    console.log(inputDate)
                     isValid = false
-                    console.log(isValid)
                 }
                 if (isValid) {
                     this.errormsgElementStep4Date.classList.add("hidden");
-                    console.log(this.errormsgElementStep4Date)
-
-                } else {
+                }
+                else {
                     this.errormsgElementStep4Date.classList.remove("hidden");
-                    console.log(this.errormsgElementStep4Date)
                 }
 
                 const inputTime = document.querySelector("input[name='time']").value;
-                console.log(inputTime);
                 if (inputTime <= 1) {
-                    console.log(inputTime)
                     isValid = false
-                    console.log(isValid)
                 }
                 if (isValid) {
                     this.errormsgElementStep4Time.classList.add("hidden");
-                    console.log(this.errormsgElementStep4Time)
-
-                } else {
+                }
+                else {
                     this.errormsgElementStep4Time.classList.remove("hidden");
-                    console.log(this.errormsgElementStep4Time)
                 }
 
                 const inputComments = document.querySelector("textarea[name='comments']").value;
-                console.log(inputComments);
                 if (inputComments.length > 30) {
-                    console.log(inputComments)
                     isValid = false
-                    console.log(isValid)
                 }
                 if (isValid) {
                     this.errormsgElementStep4Comments.classList.add("hidden");
-                    console.log(this.errormsgElementStep4Comments)
-
-                } else {
-                    this.errormsgElementStep4Comments.classList.remove("hidden");
-                    console.log(this.errormsgElementStep4Comments)
                 }
-
+                else {
+                    this.errormsgElementStep4Comments.classList.remove("hidden");
+                }
             }
-
             return isValid;
         }
 
